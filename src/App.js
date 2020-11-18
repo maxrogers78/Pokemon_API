@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// React
+import React, { useState } from "react";
+import Pokemon from "./components/Pokemon";
+import SearchPokemon from "./components/SearchPokemon";
+// Styles
+import GlobalStyles from "./styles/GlobalStyles";
 
-function App() {
+const App = () => {
+  const [input, setInput] = useState("");
+  const [pokemonData, setPokemonData] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GlobalStyles />
+      <SearchPokemon
+        input={input}
+        setInput={setInput}
+        pokemonData={pokemonData}
+        setPokemonData={setPokemonData}
+      />
+      <Pokemon pokemonData={pokemonData} />
     </div>
   );
-}
+};
 
 export default App;
